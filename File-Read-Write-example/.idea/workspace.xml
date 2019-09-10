@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="764129af-dd67-4bb4-9803-381baf3f2445" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileReadTryWithResource/ReadTryWithResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileReadTryWithResource/ReadTryWithResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileReader/ReadFromFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileReader/ReadFromFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileWriter/WriteToFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileWriter/WriteToFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileWriterTryWithResource/WriteTryWithResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/File-Read-Write-example/fileWriterTryWithResource/WriteTryWithResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileReadTryWithResource/ReadTryWithResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileReadTryWithResource/ReadTryWithResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileReader/ReadFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileReader/ReadFromFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileWriter/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileWriter/WriteToFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fileWriterTryWithResource/WriteTryWithResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileWriterTryWithResource/WriteTryWithResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fileTryWithResource.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../fileTryWithResource.txt" afterDir="false" />
-    </list>
+    <list default="true" id="764129af-dd67-4bb4-9803-381baf3f2445" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
