@@ -10,7 +10,11 @@ public class ReadTryWithResource {
 
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
 
-            System.out.println(bufferedReader.readLine());
+            String line = "";
+
+            while ((line= bufferedReader.readLine())!=null){
+                System.out.println(line);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

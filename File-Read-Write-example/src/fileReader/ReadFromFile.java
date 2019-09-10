@@ -11,7 +11,11 @@ public class ReadFromFile {
         try {
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            System.out.println(bufferedReader.readLine());
+            String line = "";
+
+            while ((line= bufferedReader.readLine())!=null){
+                System.out.println(line);
+            }
 
             bufferedReader.close();
             fileReader.close();

@@ -12,9 +12,10 @@ public class WriteTryWithResource {
 
             int i = 0;
 
-            while (i<=10){
+            while (i<10){
                 i++;
-                bufferedWriter.write(i);
+                bufferedWriter.write(i+"");
+                bufferedWriter.newLine();
             }
 
         } catch (IOException e) {

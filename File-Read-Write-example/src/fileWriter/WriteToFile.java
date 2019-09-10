@@ -12,9 +12,10 @@ public class WriteToFile {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             int i = 0;
-            while (i<=10) {
+            while (i<10) {
                 i++;
-                bufferedWriter.write(i);
+                bufferedWriter.write(i+"");
+                bufferedWriter.newLine();
             }
             bufferedWriter.flush();
             fileWriter.flush();
