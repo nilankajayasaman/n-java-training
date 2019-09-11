@@ -1,7 +1,7 @@
 public class ArrayPrinter {
 
-    public <T> void printArray(T[] t){
-        for (T x: t) {
+    public <E> void printArray(E[] t){
+        for (E x: t) {
             System.out.println(x);
         }
         System.out.println();
