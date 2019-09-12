@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0af7646a-08fb-4a47-abdc-d0087d46bfac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ArrayPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../auth-server/src/main/java/com/javaTraining/oAuthServer/authserver/conf/AuthServerConfigurations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../auth-server/src/main/java/com/javaTraining/oAuthServer/authserver/conf/UserConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File-Read-Write-example/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../File-Read-Write-example/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +27,7 @@
   <component name="ProjectId" id="1QfsXfu4qIDEVMPSPedoeMdQ3rF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../auth-server" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
