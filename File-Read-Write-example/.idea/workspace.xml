@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="764129af-dd67-4bb4-9803-381baf3f2445" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../auth-server/src/main/java/com/javaTraining/oAuthServer/authserver/conf/AuthServerConfigurations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../auth-server/src/main/java/com/javaTraining/oAuthServer/authserver/conf/UserConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Generics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Generics/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="764129af-dd67-4bb4-9803-381baf3f2445" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +22,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Generics" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../auth-server" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
