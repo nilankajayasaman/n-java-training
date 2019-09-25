@@ -22,7 +22,7 @@ public class FormController {
 //        while (enumeration.hasMoreElements()){
 //            System.out.println(enumeration.nextElement());
 //        }
-        return "home";
+        return "new_student";
     }
 
 }

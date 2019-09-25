@@ -9,17 +9,16 @@
     <title>Home</title>
 </head>
 <body>
-
 <div th:insert="header :: navbar"></div>
 
-
+<div style="margin-left:20px; margin-top:10px;">
 <form th:action="@{/save}" th:object="${student}" method="post">
     <div class="row">
         <div class="col-lg-2">
             <label class="lg-3">Name</label>
         </div>
         <div class="col-lg-4">
-            <input type="name" class="form-control lg-8" id="name" name="name" th:value="${student.name}" placeholder="Name">
+            <input type="name" class="form-control lg-8" id="name" name="name" th:value="${student.name}">
         </div>
     </div>
     <br/>
@@ -29,7 +28,7 @@
             <label class="lg-3">Address</label>
         </div>
         <div class="col-lg-4">
-                <input type="name" class="form-control lg-8" id="city" name="city" th:value="${student.city}" placeholder="City">
+                <input type="name" class="form-control lg-8" id="city" name="city" th:value="${student.city}">
 
 <!--            <div class="accordion" id="accordionExample">-->
 <!--                <div class="card">-->
@@ -52,13 +51,23 @@
     </div>
     <br/>
     <div class="row">
+        <div class="col-lg-2">
+            <label class="lg-3">Telephone No</label>
+        </div>
+        <div class="col-lg-4">
+            <input type="tel" class="form-control lg-8" id="tel" name="tel" th:value="${student.tel}">
+        </div>
+    </div>
+    <br/>
+    <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-4">
-            <input type="submit" class="button btn-primary" value="Save">
+            <input type="submit" class="button btn-primary float-right" value="Save">
         </div>
     </div>
     <br/>
 </form>
+</div>
 
 
 

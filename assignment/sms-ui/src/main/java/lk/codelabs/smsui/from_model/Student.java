@@ -7,8 +7,18 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class Student {
 
+    private Integer id;
     private String name;
     private String city;
+    private String tel;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -24,5 +34,13 @@ public class Student {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 }

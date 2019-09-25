@@ -23,7 +23,7 @@ public class StudentController {
         return "hello Springboot";
     }
 
-    @RequestMapping(value = "/student",method = RequestMethod.POST)
+    @RequestMapping(value = "/students",method = RequestMethod.POST)
     public Student save(@RequestBody Student student){
 
         for (Telephone tel: student.getTelephones()) {
@@ -53,13 +53,13 @@ public class StudentController {
 //    }
 //
 
-    @RequestMapping(value = "/student",method = RequestMethod.GET)
+    @RequestMapping(value = "/students",method = RequestMethod.GET)
     public List<Student> fetchAll(Optional<Integer> id){
 
         return studentService.findAll();
     }
 
-    @RequestMapping(value = "/student/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/students/{id}",method = RequestMethod.GET)
     public Optional<Student> findById(@PathVariable Integer id){
         return studentService.findById(id);
     }
