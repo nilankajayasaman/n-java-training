@@ -1,0 +1,23 @@
+INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_uri, scope, access_token_validity, refresh_token_validity, resource_ids, authorized_grant_types, additional_information) VALUES ('web', '{bcrypt}$2a$10$gPhlXZfms0EpNHX0.HHptOhoFD1AoxSr/yUIdTqA8vtjeP4zi0DDu', 'http://localhost:8080/login', 'READ,WRITE', '3600', '10000', 'inventory,payment', 'authorization_code,password,refresh_token,implicit', '{}');
+
+ INSERT INTO permission (name) VALUES
+ ('create'),
+ ('read'),
+ ('update'),
+ ('delete');
+
+ INSERT INTO role (name) VALUES
+		('MANAGER'),('OPERATOR');
+
+ INSERT INTO permission_role (permission_id, role_id) VALUES
+     (1,1), /*create-> manager */
+     (2,1), /* read manager */
+     (4,1), /* delete manager */
+     (2,2);  /* read operator */
+insert into user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('1', 'nilanka','{bcrypt}$2a$10$3bxj4HDDZnkk4zk7bUSrMeLdNIwS5ca1VNMEU435yzjaMmphqMD1W', 'nilanka@gmail.com', '1', '1', '1', '1');
+ insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('2', 'kumara', '{bcrypt}$2a$10$wQ8vZl3Zm3.zDSIcZEYym.bGq3fPMJXH9k.Vhudcfr6O6KQwDPSt6','kumara@gmail.com', '1', '1', '1', '1');
+
+INSERT INTO role_user (role_id, user_id)
+    VALUES
+    (1, 1) /* nilanka-manager */,
+    (2, 2) /* kumara-operator */ ;

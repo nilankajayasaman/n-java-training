@@ -18,6 +18,8 @@ public class FormController {
         System.out.println(student.getName());
         System.out.println(student.getCity());
 
+
+
 //        Enumeration enumeration = httpServletRequest.getParameterNames();
 //        while (enumeration.hasMoreElements()){
 //            System.out.println(enumeration.nextElement());

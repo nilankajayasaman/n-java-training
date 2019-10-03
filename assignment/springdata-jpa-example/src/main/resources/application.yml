@@ -1,8 +1,12 @@
 server:
   port: 8282
 spring:
+  config:
+    name:
+      application: student-server
   datasource:
-    url: jdbc:mysql://mysql-docker:3306/jpadb?createDatabaseIfNotExist=true
+#    url: jdbc:mysql://student-server:3306/jpadb?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/jpadb?createDatabaseIfNotExist=true
     username: root
     password: 1qaz2wsx@
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -16,6 +20,7 @@ spring:
 security:
   oauth2:
     resource:
+#      token-info-uri: http://auth-server:8383/oauth/check_token
       token-info-uri: http://localhost:8383/oauth/check_token
     client:
       client-id: web

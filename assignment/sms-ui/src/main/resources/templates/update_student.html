@@ -10,7 +10,7 @@
 <body>
 <div th:insert="header :: navbar"></div>
 <div style="margin-left:20px; margin-top:10px;">
-<form th:action="@{/save}" th:object="${student}" method="post">
+<form th:action="@{/save}" th:object="${student}" th:method="post">
     <div class="row">
         <div class="col-lg-2">
             <label class="lg-3">Student Id</label>
