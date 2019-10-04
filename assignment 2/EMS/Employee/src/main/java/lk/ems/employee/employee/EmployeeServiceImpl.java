@@ -1,0 +1,27 @@
+package lk.ems.employee.employee;
+
+import lk.ems.employee.entity.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class EmployeeServiceImpl {
+
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    public Page<Employee> getAllEmployees(int page){
+        return employeeRepository.findAll(PageRequest.of(page,10));
+    }
+
+
+    public Employee saveEmployee(Employee employee){
+        return employeeRepository.save(employee);
+    }
+
+
+}

@@ -1,0 +1,28 @@
+server:
+  port: 8484
+spring:
+  config:
+    name:
+      application: project-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/ems?createDatabaseIfNotExist=true
+    username: root
+    password: 1qaz2wsx@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    hikari:
+      minimumIdle: 10
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:9090/oauth/check_token
+    client:
+      client-id: web
+      client-secret: pin
+
+
+
