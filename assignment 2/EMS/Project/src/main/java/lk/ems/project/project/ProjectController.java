@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping("/ems/api/v1")
 public class ProjectController {
@@ -13,15 +15,14 @@ public class ProjectController {
     ProjectServiceImpl projectService;
 
     @RequestMapping(value = "/projects/{page}" , method = RequestMethod.GET)
-    public Page<Project> getAllEmployees(@PathVariable("page") int page){
-
+    public Page<Project> getAllProjects(@PathVariable("page") int page){
         return projectService.getAllProjects(page);
     }
 
     @RequestMapping(value = "/projects" , method = RequestMethod.POST)
-    public Project saveEmployees(@RequestBody Project employee){
+    public Project saveProject(@RequestBody Project project){
 
-        return projectService.saveProject(employee);
+        return projectService.saveProject(project);
     }
 
 }

@@ -1,16 +1,24 @@
 package lk.ems.emsui.model;
 
+import org.springframework.context.annotation.Scope;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+@Scope("prototype")
 public class Employee {
 
     private Integer employeeId;
 
 
+    @NotBlank(message = "First name is mandatory")
     private String firstName;
 
-
+    @NotBlank(message = "Surname is mandatory")
     private String surName;
 
-
+    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Email should be valid")
     private String email;
 
 

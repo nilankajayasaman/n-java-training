@@ -12,14 +12,14 @@ public class TaskController {
     @Autowired
     TaskServiceImpl taskService;
 
-    @RequestMapping(value = "/task/{page}" , method = RequestMethod.GET)
-    public Page<Task> getAllEmployees(@PathVariable("page") int page){
+    @RequestMapping(value = "/tasks/{page}" , method = RequestMethod.GET)
+    public Page<Task> getAllTasks(@PathVariable("page") int page){
 
         return taskService.getAllTask(page);
     }
 
-    @RequestMapping(value = "/task" , method = RequestMethod.POST)
-    public Task saveEmployees(@RequestBody Task task){
+    @RequestMapping(value = "/tasks" , method = RequestMethod.POST)
+    public Task saveTask(@RequestBody Task task){
 
         return taskService.saveTask(task);
     }

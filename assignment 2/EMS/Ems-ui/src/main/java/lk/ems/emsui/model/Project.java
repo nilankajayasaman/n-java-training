@@ -1,12 +1,19 @@
 package lk.ems.emsui.model;
 
+import org.springframework.context.annotation.Scope;
 
+import javax.validation.constraints.NotBlank;
+
+@Scope("prototype")
 public class Project {
+
 
     private Integer projectId;
 
+    @NotBlank(message = "Title is mandatory")
     private String title;
 
+    @NotBlank(message = "Description is mandatory")
     private String description;
 
     public Integer getProjectId() {

@@ -1,6 +1,8 @@
 package lk.ems.emsui.model;
 
+import org.springframework.context.annotation.Scope;
 
+@Scope("prototype")
 public class Operation {
 
     private Integer operationId;
