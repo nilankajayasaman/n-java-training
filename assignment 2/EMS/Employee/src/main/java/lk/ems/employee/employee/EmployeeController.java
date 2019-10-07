@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ems/api/v1")
 public class EmployeeController {
@@ -13,9 +15,13 @@ public class EmployeeController {
     EmployeeServiceImpl employeeService;
 
     @RequestMapping(value = "/employees/{page}" , method = RequestMethod.GET)
-    public Page<Employee> getAllEmployees(@PathVariable("page") int page){
+    public Page<Employee> getLimitEmployees(@PathVariable("page") int page){
+        return employeeService.getLimitEmployees(page);
+    }
 
-        return employeeService.getAllEmployees(page);
+    @RequestMapping(value = "/employees" , method = RequestMethod.GET)
+    public List<Employee> getAllEmployees(){
+        return employeeService.getAllEmployees();
     }
 
     @RequestMapping(value = "/employees" , method = RequestMethod.POST)

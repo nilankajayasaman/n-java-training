@@ -9,11 +9,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
 public interface OperationRepository extends JpaRepository<Operation, Integer> {
 
-    Page<Operation> findByEmployee(Employee employee, Pageable pageable);
 
-    Page<Operation> findByEmployeeAndProjectId(Employee employee,int projectId, Pageable pageable);
+    Page<Operation> findByEmployeeId(int employeeId, Pageable pageable);
+
+    Page<Operation> findByEmployeeIdAndProjectId(int employeeId,int projectId, Pageable pageable);
 
 }

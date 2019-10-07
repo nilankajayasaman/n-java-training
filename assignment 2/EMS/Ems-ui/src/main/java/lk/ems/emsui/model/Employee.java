@@ -15,7 +15,7 @@ public class Employee {
     private String firstName;
 
     @NotBlank(message = "Surname is mandatory")
-    private String surName;
+    private String surname;
 
     @NotBlank(message = "Email is mandatory")
     @Email(message = "Email should be valid")
@@ -38,12 +38,12 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getEmail() {

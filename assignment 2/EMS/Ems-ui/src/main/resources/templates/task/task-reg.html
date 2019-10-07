@@ -20,14 +20,16 @@
             <h3 class="col">New Task</h3>
         </div><br/>
         <div class="row">
-            <form>
+            <form th:action="@{save-task}" th:object="${task}" th:method="post">
                 <div class="form-group col">
                     <label for="taskTitle">Task Title</label>
-                    <input type="text" class="form-control" id="taskTitle" name="taskTitle" aria-describedby="taskTitle" placeholder="Enter task title">
+                    <input type="text" class="form-control" id="taskTitle" th:field="*{taskTitle}" aria-describedby="taskTitle" placeholder="Enter task title">
+                    <span class="text-danger" th:if="${#fields.hasErrors('taskTitle')}" th:errors="*{taskTitle}"></span>
                 </div>
                 <div class="form-group col">
                     <label for="taskDescription"> Task Description</label>
-                    <input type="textarea" class="form-control" id="taskDescription" name="taskDescription" aria-describedby="taskDescription" placeholder="Enter task description">
+                    <input type="textarea" class="form-control" id="taskDescription" th:field="*{taskDescription}" aria-describedby="taskDescription" placeholder="Enter task description">
+                    <span class="text-danger" th:if="${#fields.hasErrors('taskDescription')}" th:errors="*{taskDescription}"></span>
                 </div>
                 <div class="col d-flex flex-row-reverse">
                     <button type="submit" class="btn btn-primary">Submit</button>

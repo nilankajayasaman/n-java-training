@@ -1,6 +1,7 @@
 package lk.ems.employee.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,9 +12,15 @@ public class Operation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer operationId;
 
-    @Basic
-    @OneToOne(cascade = CascadeType.ALL)
+////    @Basic
+//    @Transient
+    @OneToOne
+    @JoinColumn(name = "employeeId",insertable = false, updatable = false)
     private Employee employee;
+
+    @Basic
+//    @OneToOne(cascade = CascadeType.ALL)
+    private Integer employeeId;
 
     @Basic
     private Integer projectId;
@@ -21,12 +28,23 @@ public class Operation {
     @Basic
     private Integer taskId;
 
+    @Transient
+    private Project project;
+
     public Integer getOperationId() {
         return operationId;
     }
 
     public void setOperationId(Integer operationId) {
         this.operationId = operationId;
+    }
+
+    public Integer getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Integer employeeId) {
+        this.employeeId = employeeId;
     }
 
     public Employee getEmployee() {
@@ -51,5 +69,13 @@ public class Operation {
 
     public void setTaskId(Integer taskId) {
         this.taskId = taskId;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project= project;
     }
 }

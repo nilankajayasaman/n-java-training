@@ -14,10 +14,13 @@ public class EmployeeServiceImpl {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public Page<Employee> getAllEmployees(int page){
-        return employeeRepository.findAll(PageRequest.of(page,10));
+    public List<Employee> getAllEmployees(){
+        return employeeRepository.findAll();
     }
 
+    public Page<Employee> getLimitEmployees(int page){
+        return employeeRepository.findAll(PageRequest.of(page,10));
+    }
 
     public Employee saveEmployee(Employee employee){
         return employeeRepository.save(employee);

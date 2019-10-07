@@ -2,6 +2,7 @@ package lk.ems.emsui.controller;
 
 import lk.ems.emsui.conf.AccessTokenConfigure;
 import lk.ems.emsui.model.Employee;
+import lk.ems.emsui.model.Operation;
 import lk.ems.emsui.model.Project;
 import lk.ems.emsui.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +21,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class Form_Controller {
@@ -26,6 +31,7 @@ public class Form_Controller {
     @Autowired
     RestTemplate restTemplate;
 
+//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "employee/save-emp", method = RequestMethod.POST)
     public String saveEmployee(@Valid Employee employee,BindingResult bindingResult,
                                RedirectAttributes redirectAttributes){
@@ -56,6 +62,7 @@ public class Form_Controller {
     }
 
 
+//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "project/save-project", method = RequestMethod.POST)
     public String saveProject(@Valid Project project, BindingResult bindingResult,
                               RedirectAttributes redirectAttributes){
@@ -88,7 +95,7 @@ public class Form_Controller {
 
 
 
-
+//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "task/save-task", method = RequestMethod.POST)
     public String saveTask(@Valid Task task, BindingResult bindingResult,
                            RedirectAttributes redirectAttributes){
@@ -117,4 +124,49 @@ public class Form_Controller {
         }
         return "redirect:/task";
     }
+
+
+//    @PreAuthorize("hasRole(MANAGER)")
+    @RequestMapping(value = "save-operation", method = RequestMethod.POST)
+    public String saveOperation(@Valid Operation operation, BindingResult bindingResult,
+                                RedirectAttributes redirectAttributes){
+
+        System.out.println(operation.getEmployeeId());
+        if (bindingResult.hasErrors()){
+            return "/operation";
+        }
+        List<Operation> operations = new ArrayList<>();
+        operation.getTaskList().forEach((task)->{
+            Operation op = new Operation();
+            op.setEmployeeId(operation.getEmployeeId());
+            op.setProjectId(operation.getProjectId());
+            op.setTaskId(task);
+            operations.add(op);
+        });
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
+        HttpEntity<Employee> httpEntity = new HttpEntity(operations,httpHeaders);
+        try {
+            ResponseEntity<ArrayList> responseEntity =
+                    restTemplate.exchange("http://localhost:8282/ems/api/v1/operations",
+                            HttpMethod.POST,
+                            httpEntity, ArrayList.class);
+            System.out.println(responseEntity.getBody());
+            if (responseEntity.getStatusCodeValue() == 200) {
+                redirectAttributes.addFlashAttribute("success", true);
+                redirectAttributes.addFlashAttribute("massage", "Task saved");
+            } else {
+                redirectAttributes.addFlashAttribute("error", true);
+                redirectAttributes.addFlashAttribute("message", responseEntity.getStatusCode());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            redirectAttributes.addFlashAttribute("error", true);
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+            return "redirect:/operation";
+        }
+        return "redirect:/operation";
+    }
+
 }

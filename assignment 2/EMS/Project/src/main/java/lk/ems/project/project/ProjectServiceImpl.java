@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 
 @Service
 public class ProjectServiceImpl {
@@ -14,10 +15,17 @@ public class ProjectServiceImpl {
     @Autowired
     ProjectRepository projectRepository;
 
-    public Page<Project> getAllProjects(int page){
+    public List<Project> getAllProjects(){
+        return projectRepository.findAll();
+    }
+
+    public Page<Project> getLimitProjects(int page){
         return projectRepository.findAll(PageRequest.of(page,10));
     }
 
+    public List<Project> getEmployeeProjects(List<Integer> projectIds){
+        return projectRepository.findByProjectIdIn(projectIds);
+    }
 
     public Project saveProject(Project project){
         return projectRepository.save(project);

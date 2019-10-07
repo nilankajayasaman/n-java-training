@@ -20,18 +20,16 @@
             <h3 class="col">New Project</h3>
         </div><br/>
         <div class="row">
-            <form>
+            <form th:action="@{save-project}" th:object="${project}" th:method="post">
                 <div class="form-group col">
                     <label for="projectTitle">Project Title</label>
-                    <input type="text" class="form-control" id="projectTitle" name="projectTitle" aria-describedby="projectTitle" placeholder="Enter first name">
+                    <input type="text" class="form-control" id="projectTitle" th:field="*{title}" aria-describedby="projectTitle" placeholder="Enter first name">
+                    <span class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
                 </div>
                 <div class="form-group col">
                     <label for="projectDescription"> Project Description</label>
-                    <input type="text" class="form-control" id="projectDescription" name="projectDescription" aria-describedby="projectDescription" placeholder="Enter surname">
-                </div>
-                <div class="form-group col">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                    <input type="text" class="form-control" id="projectDescription" th:field="*{description}" aria-describedby="projectDescription" placeholder="Enter surname">
+                    <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
                 </div>
                 <div class="col d-flex flex-row-reverse">
                     <button type="submit" class="btn btn-primary">Submit</button>

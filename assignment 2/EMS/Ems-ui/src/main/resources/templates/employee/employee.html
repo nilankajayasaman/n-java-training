@@ -31,7 +31,7 @@
             <tr th:each="employee:${employees.content}">
                 <th th:text="${employee.employeeId}"></th>
                 <td th:text="${employee.firstName}"></td>
-                <td th:text="${employee.surName}"></td>
+                <td th:text="${employee.surname}"></td>
                 <td th:text="${employee.email}"></td>
                 <td><a th:href="@{/employee/emp-projects} + '/' +${employee.employeeId}"><input type="button" value="view"></a></td>
             </tr>

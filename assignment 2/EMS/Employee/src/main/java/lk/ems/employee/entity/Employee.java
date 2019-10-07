@@ -14,7 +14,7 @@ public class Employee {
     private String firstName;
 
     @Basic
-    private String surName;
+    private String surname;
 
     @Basic
     private String email;
@@ -36,12 +36,12 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getEmail() {
