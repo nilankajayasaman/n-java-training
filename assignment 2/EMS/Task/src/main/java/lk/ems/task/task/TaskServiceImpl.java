@@ -22,6 +22,10 @@ public class TaskServiceImpl {
         return taskRepository.findAll();
     }
 
+    public List<Task> getEmployeeProjectTask(List<Integer> taskList){
+        return taskRepository.findByTaskIdIn(taskList);
+    }
+
     public Task saveTask(Task employee){
         return taskRepository.save(employee);
     }

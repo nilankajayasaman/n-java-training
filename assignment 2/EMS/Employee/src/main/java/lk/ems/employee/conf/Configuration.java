@@ -12,4 +12,9 @@ public class Configuration {
         return new RestTemplate();
     }
 
+//    @Bean
+//    public EmployeeProject employeeProject(){
+//        return new EmployeeProject();
+//    }
+
 }

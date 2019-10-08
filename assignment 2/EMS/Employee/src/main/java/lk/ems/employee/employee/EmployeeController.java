@@ -3,6 +3,7 @@ package lk.ems.employee.employee;
 import lk.ems.employee.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,18 +16,20 @@ public class EmployeeController {
     EmployeeServiceImpl employeeService;
 
     @RequestMapping(value = "/employees/{page}" , method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('read')")
     public Page<Employee> getLimitEmployees(@PathVariable("page") int page){
         return employeeService.getLimitEmployees(page);
     }
 
     @RequestMapping(value = "/employees" , method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('read')")
     public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
     }
 
     @RequestMapping(value = "/employees" , method = RequestMethod.POST)
+    @PreAuthorize("hasRole('MANAGER')")
     public Employee saveEmployees(@RequestBody Employee employee){
-
         return employeeService.saveEmployee(employee);
     }
 

@@ -1,9 +1,12 @@
 package lk.ems.emsui.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 @Scope("prototype")
 public class Employee {
@@ -21,6 +24,8 @@ public class Employee {
     @Email(message = "Email should be valid")
     private String email;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date;
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -52,5 +57,13 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

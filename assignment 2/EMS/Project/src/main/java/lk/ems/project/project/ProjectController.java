@@ -3,6 +3,7 @@ package lk.ems.project.project;
 import lk.ems.project.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,22 +19,26 @@ public class ProjectController {
     ProjectServiceImpl projectService;
 
     @RequestMapping(value = "/projects" , method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('read')")
     public List<Project> getAllProjects(){
         return projectService.getAllProjects();
     }
 
     @RequestMapping(value = "/projects/{page}" , method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('read')")
     public Page<Project> getLimitProjects(@PathVariable("page") int page){
         return projectService.getLimitProjects(page);
     }
 
     @RequestMapping(value = "/projects/employee/{prList}" , method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('read')")
     public List<Project> getProjectList(@PathVariable("prList") List<Integer> prList){
         return projectService.getEmployeeProjects(prList);
     }
 
 
     @RequestMapping(value = "/projects" , method = RequestMethod.POST)
+    @PreAuthorize("hasRole('MANAGER')")
     public Project saveProject(@RequestBody Project project){
 
         return projectService.saveProject(project);

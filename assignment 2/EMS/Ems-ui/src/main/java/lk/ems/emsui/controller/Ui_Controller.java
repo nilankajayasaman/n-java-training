@@ -177,8 +177,9 @@ public class Ui_Controller {
         return "employee/emp-reg";
     }
 
-//    @PreAuthorize("hasRole(MANAGER)")
+
     @RequestMapping(value = "project/pro-reg", method = RequestMethod.GET)
+//    @PreAuthorize("hasRole(MANAGER)")
     public String createProject(Model model){
         model.addAttribute("project",project);
         return "project/pro-reg";
@@ -192,8 +193,8 @@ public class Ui_Controller {
     }
 
 //    @PreAuthorize("hasRole(MANAGER)")
-    @RequestMapping(value = "employee/emp-projects/{empId}/{page}", method = RequestMethod.GET)
-    public String getEmployeeProjects(@PathVariable("empId") int empId,@PathVariable("page") Optional<Integer> page){
+    @RequestMapping(value = "employee/emp-projects/{empId}", method = RequestMethod.GET)
+    public String getEmployeeProjects(@PathVariable("empId") int empId,@PathParam("page") Optional<Integer> page,Model model){
 
         int pageNo = 0;
 
@@ -205,14 +206,41 @@ public class Ui_Controller {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
 
-        HttpEntity<Operation1> httpEntity = new HttpEntity<>(httpHeaders);
-        System.out.println(pageNo);
+        HttpEntity<EmployeeHasProject> httpEntity = new HttpEntity<>(httpHeaders);
+
         ResponseEntity<HashMap> responseEntity =
                 restTemplate.exchange("http://localhost:8282/ems/api/v1/operations/"+empId+"/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
-        System.out.println(responseEntity.getBody());
 
+        model.addAttribute("operation",responseEntity.getBody());
         return "employee/emp-projects";
     }
+
+
+    @RequestMapping(value = "employee/emp-project-task/{empId}/{proId}", method = RequestMethod.GET)
+    public String getEmployeeProjects(@PathVariable("empId") int empId,@PathVariable("proId") int proId,
+                                      @PathParam("page") Optional<Integer> page,Model model){
+
+        int pageNo = 0;
+
+        if (page.isPresent()){
+            pageNo = page.get()-1;
+        }
+
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
+
+        HttpEntity<EmployeeProjectHasTask> httpEntity = new HttpEntity<>(httpHeaders);
+        System.out.println(pageNo);
+        ResponseEntity<HashMap> responseEntity =
+                restTemplate.exchange("http://localhost:8282/ems/api/v1/operations/"+empId+"/"+proId+"/"+pageNo,
+                        HttpMethod.GET,
+                        httpEntity, HashMap.class);
+
+        model.addAttribute("operation",responseEntity.getBody());
+        return "employee/emp-tasks";
+    }
+
 }
