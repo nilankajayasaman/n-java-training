@@ -13,10 +13,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/employee/emp-reg").access("hasAuthority('MANAGER')")
-                .antMatchers("/project/pro-reg").access("hasRole('MANAGER')")
-                .antMatchers("/task/task-reg").access("hasRole('MANAGER')")
-                .antMatchers("/operation").access("hasRole('MANAGER')")
-                .antMatchers("/")
+                .antMatchers("/project/pro-reg").access("hasAuthority('MANAGER')")
+                .antMatchers("/task/task-reg").access("hasAuthority('MANAGER')")
+                .antMatchers("/operation").access("hasAuthority('MANAGER')")
+                .antMatchers("/","/images/*")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

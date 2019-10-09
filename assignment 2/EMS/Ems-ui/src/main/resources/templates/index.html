@@ -9,16 +9,34 @@
 
     <title>EMS</title>
 </head>
-<body>
+<body style="background-image:url('images/background.jpg')">
+<!--<div style="position: absolute;z-index: -1;background-image:url('images/background.jpg');opacity:0.5"></div>-->
 <div style="margin:20px">
     <div class="jumbotron">
+        <p class="display-3">Employee Management System</p>
         <div class="float-right align-bottom">
-            <button class="btn-primary"><a th:href="@{/home}">Login</a></button>
+            <a th:href="@{/home}"><button class="btn btn-outline-secondary">Login</button></a>
 
         </div>
     </div>
     <div class="container" style="background-color:#c3b7bc">
-        <p>lkkl lkajsdof alsdkj olaks jdfoialk ao jalskdfj oilka sdfoijasdk</p>
+        <div class="row">
+        <div class="col-3 card">
+            <img src="../static/images/Steve_Jobs_Speaking.jpg" width="300" th:src="@{images/Steve_Jobs_Speaking.jpg}"/>
+        </div>
+        <div class="col-9 card">
+            <p>
+                During his tenure as the Chairman of the Board of Directors at Pixar,
+                lost profits in the company’s three endeavors—hardware, software, and animated
+                content—forced Jobs to make a round of deep layoffs. Jobs insisted that the employees were
+                to be let go without warning or severance pay.
+
+                Pamela Kerwin, then Pixar’s vice president and general manager,
+                insisted that employees be given at least two weeks notice, to which Jobs is reported to have shot back,
+                “Okay, but the notice is retroactive from two weeks ago.”
+            </p>
+        </div>
+        </div>
     </div>
 </div>
 </body>

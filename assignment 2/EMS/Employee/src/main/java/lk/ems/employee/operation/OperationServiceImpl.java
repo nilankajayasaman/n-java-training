@@ -34,21 +34,23 @@ public class OperationServiceImpl {
             projectIds.add(s.getOperation().getProjectId());
         });
         String prIds = projectIds.toString().replace("[","").replace("]","");
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
-        HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<Project[]> responseEntity =
-                restTemplate.exchange("http://localhost:8383/ems/api/v1/projects/employee/{prList}",
-                        HttpMethod.GET,
-                        httpEntity, Project[].class,prIds);
+        if (!prIds.equals("")) {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
+            HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
+            ResponseEntity<Project[]> responseEntity =
+                    restTemplate.exchange("http://localhost:8383/ems/api/v1/projects/employee/{prList}",
+                            HttpMethod.GET,
+                            httpEntity, Project[].class, prIds);
 
-        ehp.getContent().forEach((prj)->{
-                for (Project project:responseEntity.getBody()) {
-                    if (prj.getOperation().getProjectId()==project.getProjectId()){
+            ehp.getContent().forEach((prj) -> {
+                for (Project project : responseEntity.getBody()) {
+                    if (prj.getOperation().getProjectId() == project.getProjectId()) {
                         prj.setProject(project);
                     }
                 }
-        });
+            });
+        }
         return ehp;
     }
 

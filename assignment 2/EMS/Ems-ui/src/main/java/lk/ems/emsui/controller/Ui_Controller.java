@@ -25,6 +25,8 @@ import javax.annotation.security.RolesAllowed;
 import javax.websocket.server.PathParam;
 import java.security.Principal;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class Ui_Controller {
@@ -79,8 +81,15 @@ public class Ui_Controller {
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
 
-
-        System.out.println(responseEntity.getBody());
+        int totalPages = (int)responseEntity.getBody().get("totalPages");
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+            model.addAttribute("previous", pageNo);
+            model.addAttribute("current", pageNo+1);
+            model.addAttribute("next", pageNo+2);
+            model.addAttribute("totalPages", totalPages);
+        }
         model.addAttribute("employees",responseEntity.getBody());
         return "employee/employee";
     }
@@ -106,9 +115,16 @@ public class Ui_Controller {
                 restTemplate.exchange("http://localhost:8383/ems/api/v1/projects/"+pageNo,
                         HttpMethod.GET,
                        httpEntity, HashMap.class);
+        int totalPages = (int)responseEntity.getBody().get("totalPages");
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+            model.addAttribute("previous", pageNo);
+            model.addAttribute("current", pageNo+1);
+            model.addAttribute("next", pageNo+2);
+            model.addAttribute("totalPages", totalPages);
+        }
 
-
-        System.out.println(responseEntity.getBody());
         model.addAttribute("projects",responseEntity.getBody());
         return "project/project";
     }
@@ -134,6 +150,15 @@ public class Ui_Controller {
                 restTemplate.exchange("http://localhost:8484/ems/api/v1/tasks/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
+        int totalPages = (int)responseEntity.getBody().get("totalPages");
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+            model.addAttribute("previous", pageNo);
+            model.addAttribute("current", pageNo+1);
+            model.addAttribute("next", pageNo+2);
+            model.addAttribute("totalPages", totalPages);
+        }
         model.addAttribute("tasks",responseEntity.getBody());
         return "task/task";
     }
@@ -213,6 +238,20 @@ public class Ui_Controller {
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
 
+        int totalPages = (int)responseEntity.getBody().get("totalPages");
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+            model.addAttribute("previous", pageNo);
+            model.addAttribute("current", pageNo+1);
+            model.addAttribute("next", pageNo+2);
+            model.addAttribute("totalPages", totalPages);
+        }
+
+        System.out.println(((ArrayList)responseEntity.getBody().get("content")).get(0));
+        System.out.println(((ArrayList)responseEntity.getBody().get("content")).get(1));
+        System.out.println(((ArrayList)responseEntity.getBody().get("content")).get(2));
+        System.out.println(responseEntity.getBody());
         model.addAttribute("operation",responseEntity.getBody());
         return "employee/emp-projects";
     }
@@ -238,6 +277,16 @@ public class Ui_Controller {
                 restTemplate.exchange("http://localhost:8282/ems/api/v1/operations/"+empId+"/"+proId+"/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
+
+        int totalPages = (int)responseEntity.getBody().get("totalPages");
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+            model.addAttribute("previous", pageNo);
+            model.addAttribute("current", pageNo+1);
+            model.addAttribute("next", pageNo+2);
+            model.addAttribute("totalPages", totalPages);
+        }
 
         model.addAttribute("operation",responseEntity.getBody());
         return "employee/emp-tasks";

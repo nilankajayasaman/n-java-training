@@ -148,11 +148,11 @@ public class Form_Controller {
         httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
         HttpEntity<Employee> httpEntity = new HttpEntity(operations,httpHeaders);
         try {
+            System.out.println(operations);
             ResponseEntity<ArrayList> responseEntity =
                     restTemplate.exchange("http://localhost:8282/ems/api/v1/operations",
                             HttpMethod.POST,
                             httpEntity, ArrayList.class);
-            System.out.println(responseEntity.getBody());
             if (responseEntity.getStatusCodeValue() == 200) {
                 redirectAttributes.addFlashAttribute("success", true);
                 redirectAttributes.addFlashAttribute("massage", "Task saved");

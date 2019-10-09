@@ -1,6 +1,7 @@
 package lk.ems.employee.operation;
 
 import lk.ems.employee.entity.Operation;
+import lk.ems.employee.entity.OperationKey;
 import lk.ems.employee.model.EmployeeHasProject;
 import lk.ems.employee.model.EmployeeProjectHasTask;
 import org.springframework.data.domain.Page;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface OperationRepository extends JpaRepository<Operation, Integer> {
+public interface OperationRepository extends JpaRepository<Operation, OperationKey> {
 
     @Query("SELECT new lk.ems.employee.model.EmployeeHasProject(op,op.employee) FROM Operation op WHERE op.employeeId=:employeeId")
     Page<EmployeeHasProject> getOperationByEmployeeId(@Param("employeeId") int employeeId, Pageable pageable);

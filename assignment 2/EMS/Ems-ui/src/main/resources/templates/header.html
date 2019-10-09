@@ -31,7 +31,7 @@
             <li class="nav-item" th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/task')}? 'active':''">
                 <a class="nav-link" th:href="@{/task}">Task </a><span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item" th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/operation')}? 'active':''">
+            <li class="nav-item"  sec:authorize="hasAuthority('MANAGER')" th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/operation')}? 'active':''">
                 <a class="nav-link" th:href="@{/operation}">Operation</a><span class="sr-only">(current)</span></a>
             </li>
         </ul>

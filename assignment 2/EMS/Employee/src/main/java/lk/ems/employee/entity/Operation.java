@@ -6,38 +6,36 @@ import java.util.List;
 
 @Entity
 @Table(name = "operation")
+@IdClass(OperationKey.class)
 public class Operation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer operationId;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer operationId;
 
-////    @Basic
-//    @Transient
     @OneToOne
     @JoinColumn(name = "employeeId",insertable = false, updatable = false)
     private Employee employee;
 
-    @Basic
-//    @OneToOne(cascade = CascadeType.ALL)
+    @Id
     private Integer employeeId;
 
-    @Basic
+    @Id
     private Integer projectId;
 
-    @Basic
+    @Id
     private Integer taskId;
 
     @Transient
     private Project project;
-
-    public Integer getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(Integer operationId) {
-        this.operationId = operationId;
-    }
+//
+//    public Integer getOperationId() {
+//        return operationId;
+//    }
+//
+//    public void setOperationId(Integer operationId) {
+//        this.operationId = operationId;
+//    }
 
     public Integer getEmployeeId() {
         return employeeId;

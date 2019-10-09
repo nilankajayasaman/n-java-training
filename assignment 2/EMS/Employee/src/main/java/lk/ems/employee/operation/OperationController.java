@@ -31,9 +31,8 @@ public class OperationController {
     }
 
     @RequestMapping(value = "/operations" , method = RequestMethod.POST)
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public List<Operation> saveOperation(@RequestBody List<Operation> operation){
-
         return employeeService.saveOperation(operation);
     }
 
