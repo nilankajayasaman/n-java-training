@@ -40,6 +40,11 @@
                 <span> Hi </span><span sec:authentication="name"></span>
 <!--                <span span sec:authentication="principal.authorities"></span>-->
             </li>
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <input type="submit" value="Logout">
+                </form>
+            </li>
         </ul>
     </div>
 </nav>

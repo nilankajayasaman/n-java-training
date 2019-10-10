@@ -22,7 +22,7 @@ INSERT INTO employee VALUES
 (21,"wasantha","arachchige","wasantha@gmail.com"),
 (22,"kumari","thennakoon","kumari@gmail.com");
 
-INSERT INTO operation VALUES(1,1,1),(2,1,1),(3,1,1),(1,2,2),(1,2,1);
+--INSERT INTO operation VALUES(1,1,1),(2,1,1),(3,1,1),(1,2,2),(1,2,1);
 
 INSERT INTO project (project_id,title,description)VALUES
 (1,"ems","employee management system"),

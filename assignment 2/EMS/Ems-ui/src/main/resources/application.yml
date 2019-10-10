@@ -1,15 +1,3 @@
-server:
-  port: 8080
-  servlet:
-    session:
-      cookie:
-        name: KSID
-security:
-  oauth2:
-    client:
-      client-id: web
-      client-secret: pin
-      user-authorization-uri: http://localhost:9090/oauth/authorize
-      access-token-uri: http://localhost:9090/oauth/token
-    resource:
-      token-info-uri: http://localhost:9090/oauth/check_token
+spring:
+  application:
+    name: ems-ui

@@ -1,32 +1,22 @@
 package lk.ems.employee.model;
 
-import lk.ems.employee.entity.Employee;
 import lk.ems.employee.entity.Operation;
 import lk.ems.employee.entity.Project;
 import org.springframework.context.annotation.Scope;
 
-@Scope("prototype")
-public class EmployeeHasProject {
+import java.io.Serializable;
+import java.util.Objects;
 
-    private Integer operationId;
+//@Scope("prototype")
+public class EmployeeHasProject implements Serializable{
 
     private Operation operation;
 
-    private Employee employee;
 
-    private lk.ems.employee.entity.Project project;
+    private Project project;
 
-    public EmployeeHasProject(Operation operation, Employee employee) {
+    public EmployeeHasProject(Operation operation) {
         this.operation = operation;
-        this.employee = employee;
-    }
-
-    public Integer getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(Integer operationId) {
-        this.operationId = operationId;
     }
 
     public Operation getOperation() {
@@ -37,20 +27,25 @@ public class EmployeeHasProject {
         this.operation = operation;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public Project getProject() {
         return project;
     }
 
-    public void setProject(lk.ems.employee.entity.Project project) {
+    public void setProject(Project project) {
         this.project= project;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EmployeeHasProject that = (EmployeeHasProject) o;
+        return Objects.equals(operation, that.operation) &&
+                Objects.equals(project, that.project);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(operation, project);
+    }
 }

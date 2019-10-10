@@ -237,23 +237,22 @@ public class Ui_Controller {
                 restTemplate.exchange("http://localhost:8282/ems/api/v1/operations/"+empId+"/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
+        if (responseEntity.getBody()!=null) {
+            int totalPages = (int) ((Map) responseEntity.getBody().get("employeeHasProjects")).get("totalPages");
+            if (totalPages > 0) {
+                List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+                model.addAttribute("pageNumbers", pageNumbers);
+                model.addAttribute("previous", pageNo);
+                model.addAttribute("current", pageNo + 1);
+                model.addAttribute("next", pageNo + 2);
+                model.addAttribute("totalPages", totalPages);
+            }
 
-        int totalPages = (int)responseEntity.getBody().get("totalPages");
-        if(totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-            model.addAttribute("previous", pageNo);
-            model.addAttribute("current", pageNo+1);
-            model.addAttribute("next", pageNo+2);
-            model.addAttribute("totalPages", totalPages);
+            model.addAttribute("operation", responseEntity.getBody().get("employeeHasProjects"));
+            model.addAttribute("employee", responseEntity.getBody().get("employee"));
+            return "employee/emp-projects";
         }
-
-        System.out.println(((ArrayList)responseEntity.getBody().get("content")).get(0));
-        System.out.println(((ArrayList)responseEntity.getBody().get("content")).get(1));
-        System.out.println(((ArrayList)responseEntity.getBody().get("content")).get(2));
-        System.out.println(responseEntity.getBody());
-        model.addAttribute("operation",responseEntity.getBody());
-        return "employee/emp-projects";
+        return "redirect:/employee";
     }
 
 
@@ -278,17 +277,22 @@ public class Ui_Controller {
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
 
-        int totalPages = (int)responseEntity.getBody().get("totalPages");
-        if(totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-            model.addAttribute("previous", pageNo);
-            model.addAttribute("current", pageNo+1);
-            model.addAttribute("next", pageNo+2);
-            model.addAttribute("totalPages", totalPages);
+        if (responseEntity.getBody()!=null) {
+            int totalPages = (int) ((Map) responseEntity.getBody().get("employeeProjectHasTasks")).get("totalPages");
+            if (totalPages > 0) {
+                List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+                model.addAttribute("pageNumbers", pageNumbers);
+                model.addAttribute("previous", pageNo);
+                model.addAttribute("current", pageNo + 1);
+                model.addAttribute("next", pageNo + 2);
+                model.addAttribute("totalPages", totalPages);
+            }
         }
 
-        model.addAttribute("operation",responseEntity.getBody());
+        model.addAttribute("operation",responseEntity.getBody().get("employeeProjectHasTasks"));
+        model.addAttribute("employee",responseEntity.getBody().get("employee"));
+        model.addAttribute("project",responseEntity.getBody().get("project"));
+
         return "employee/emp-tasks";
     }
 

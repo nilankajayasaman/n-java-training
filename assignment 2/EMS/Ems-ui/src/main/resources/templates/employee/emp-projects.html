@@ -17,7 +17,9 @@
     <br/>
     <div class="row">
         <span>Employee Projects</span><br/>
-        <span th:each="ob: ${operation.content}" th:text="${ob.employee}"></span>
+        <span th:text="${employee.firstName}"></span>
+        <span th:text="${employee.surname}"></span>
+        <span th:text="${employee.email}"></span>
         <table class="table">
             <thead class="thead-dark">
             <tr>
@@ -32,7 +34,7 @@
                 <th th:text="${ob.project.projectId}">1</th>
                 <td th:text="${ob.project.title}">1</td>
                 <td th:text="${ob.project.description}"></td>
-                <td><a th:href="@{/employee/emp-project-task}+'/'+${ob.employee.employeeId}+'/'+${ob.project.projectId}"><input type="button" value="view"></a></td>
+                <td><a th:href="@{/employee/emp-project-task}+'/'+${ob.operation.employeeId}+'/'+${ob.project.projectId}"><input type="button" value="view"></a></td>
             </tr>
             </tbody>
         </table>

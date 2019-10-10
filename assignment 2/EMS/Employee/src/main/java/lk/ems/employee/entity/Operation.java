@@ -1,21 +1,25 @@
 package lk.ems.employee.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "operation")
 @IdClass(OperationKey.class)
-public class Operation {
+public class Operation implements Serializable {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Integer operationId;
 
-    @OneToOne
-    @JoinColumn(name = "employeeId",insertable = false, updatable = false)
-    private Employee employee;
+//    @JsonIgnore
+//    @OneToOne
+//    @JoinColumn(name = "employeeId",insertable = false, updatable = false)
+//    private Employee employee;
 
     @Id
     private Integer employeeId;
@@ -26,16 +30,6 @@ public class Operation {
     @Id
     private Integer taskId;
 
-    @Transient
-    private Project project;
-//
-//    public Integer getOperationId() {
-//        return operationId;
-//    }
-//
-//    public void setOperationId(Integer operationId) {
-//        this.operationId = operationId;
-//    }
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -43,14 +37,6 @@ public class Operation {
 
     public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     public Integer getProjectId() {
@@ -69,11 +55,4 @@ public class Operation {
         this.taskId = taskId;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project= project;
-    }
 }

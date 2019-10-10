@@ -1,35 +1,21 @@
 package lk.ems.employee.model;
 
-import lk.ems.employee.entity.Employee;
 import lk.ems.employee.entity.Operation;
-import lk.ems.employee.entity.Project;
 import lk.ems.employee.entity.Task;
 import org.springframework.context.annotation.Scope;
 
-@Scope("prototype")
-public class EmployeeProjectHasTask {
+import java.io.Serializable;
+import java.util.Objects;
 
-    private Integer operationId;
+//@Scope("prototype")
+public class EmployeeProjectHasTask {
 
     private Operation operation;
 
-    private Employee employee;
-
-    private Project project;
-
     private Task task;
 
-    public EmployeeProjectHasTask(Operation operation, Employee employee) {
+    public EmployeeProjectHasTask(Operation operation) {
         this.operation = operation;
-        this.employee = employee;
-    }
-
-    public Integer getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(Integer operationId) {
-        this.operationId = operationId;
     }
 
     public Operation getOperation() {
@@ -40,27 +26,25 @@ public class EmployeeProjectHasTask {
         this.operation = operation;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project= project;
-    }
-
     public Task getTask() {
         return task;
     }
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EmployeeProjectHasTask that = (EmployeeProjectHasTask) o;
+        return Objects.equals(operation, that.operation) &&
+                Objects.equals(task, that.task);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(operation, task);
     }
 }
