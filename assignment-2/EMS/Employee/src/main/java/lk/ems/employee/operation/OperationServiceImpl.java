@@ -1,6 +1,5 @@
 package lk.ems.employee.operation;
 
-import com.sun.deploy.net.HttpResponse;
 import lk.ems.employee.conf.AccessTokenConfigure;
 import lk.ems.employee.employee.EmployeeRepository;
 import lk.ems.employee.entity.Employee;
