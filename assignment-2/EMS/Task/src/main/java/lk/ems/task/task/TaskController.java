@@ -1,6 +1,6 @@
 package lk.ems.task.task;
 
-import lk.ems.task.entity.Task;
+import com.commons.model.emsmodel.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,7 +30,7 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/tasks" , method = RequestMethod.POST)
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public Task saveTask(@RequestBody Task task){
 
         return taskService.saveTask(task);

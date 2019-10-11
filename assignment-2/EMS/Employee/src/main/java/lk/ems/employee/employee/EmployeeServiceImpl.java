@@ -1,6 +1,6 @@
 package lk.ems.employee.employee;
 
-import lk.ems.employee.entity.Employee;
+import com.commons.model.emsmodel.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

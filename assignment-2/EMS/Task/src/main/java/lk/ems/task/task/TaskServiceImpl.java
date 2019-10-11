@@ -1,6 +1,6 @@
 package lk.ems.task.task;
 
-import lk.ems.task.entity.Task;
+import com.commons.model.emsmodel.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

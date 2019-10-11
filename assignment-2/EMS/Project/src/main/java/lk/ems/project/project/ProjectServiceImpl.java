@@ -1,6 +1,6 @@
 package lk.ems.project.project;
 
-import lk.ems.project.entity.Project;
+import com.commons.model.emsmodel.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

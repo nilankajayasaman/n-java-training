@@ -1,6 +1,6 @@
 package lk.ems.employee.employee;
 
-import lk.ems.employee.entity.Employee;
+import com.commons.model.emsmodel.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employees" , method = RequestMethod.POST)
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public Employee saveEmployees(@RequestBody Employee employee){
         return employeeService.saveEmployee(employee);
     }

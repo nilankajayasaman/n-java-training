@@ -36,11 +36,11 @@
                 <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Enter email">
                 <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
             </div>
-            <div class="form-group col">
-                <label for="date">Email</label>
-                <input type="date" class="form-control" id="date" th:field="*{date}">
-                <span class="text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
-            </div>
+<!--            <div class="form-group col">-->
+<!--                <label for="date">Email</label>-->
+<!--                <input type="date" class="form-control" id="date" th:field="*{date}">-->
+<!--                <span class="text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>-->
+<!--            </div>-->
             <div class="col d-flex flex-row-reverse">
             <button type="submit" class="btn btn-primary">Submit</button>
             </div>

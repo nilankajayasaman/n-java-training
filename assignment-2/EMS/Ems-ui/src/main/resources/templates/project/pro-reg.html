@@ -31,6 +31,16 @@
                     <input type="text" class="form-control" id="projectDescription" th:field="*{description}" aria-describedby="projectDescription" placeholder="Enter surname">
                     <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
                 </div>
+                <div class="form-group col">
+                    <label for="start"> Project Description</label>
+                    <input type="date" class="form-control" id="start" th:field="*{startDate}" aria-describedby="projectDescription">
+                    <span class="text-danger" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></span>
+                </div>
+                <div class="form-group col">
+                    <label for="end"> Project Description</label>
+                    <input type="date" class="form-control" id="end" th:field="*{endDate}" aria-describedby="projectDescription" >
+                    <span class="text-danger" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></span>
+                </div>
                 <div class="col d-flex flex-row-reverse">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

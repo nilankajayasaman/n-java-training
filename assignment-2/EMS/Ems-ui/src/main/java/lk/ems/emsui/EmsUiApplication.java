@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
-@EnableWebSecurity
+//@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class EmsUiApplication {
 

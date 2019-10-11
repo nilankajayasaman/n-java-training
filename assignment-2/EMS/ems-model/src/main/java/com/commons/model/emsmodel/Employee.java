@@ -1,4 +1,4 @@
-package lk.ems.employee.entity;
+package com.commons.model.emsmodel;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,6 +20,8 @@ public class Employee implements Serializable {
     @Basic
     private String email;
 
+    @Basic
+    private String tel;
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -51,5 +53,13 @@ public class Employee implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 }

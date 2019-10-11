@@ -14,36 +14,36 @@
 <!--        &lt;!&ndash;<span th:text="${principal.name}"></span>&ndash;&gt;-->
 <!--    </div>-->
 <!--</div>-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#106fce;">
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="navbar-brand" href="#"><h3>EMS</h3></a>
+        <a class="navbar-brand" href="#"><h2 class="label-primary" style="color:#ffffff">EMS</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/employee')} ? 'active':''">
-                <a class="nav-link" th:href="@{/employee}">Employee <span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/employee}" style="color:#ffffff">Employee <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/project')}? 'active':''">
-                <a class="nav-link" th:href="@{/project}">Project</a><span  class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/project}" style="color:#ffffff">Project</a><span  class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/task')}? 'active':''">
-                <a class="nav-link" th:href="@{/task}">Task </a><span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/task}" style="color:#ffffff">Task </a><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item"  sec:authorize="hasAuthority('MANAGER')" th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/operation')}? 'active':''">
-                <a class="nav-link" th:href="@{/operation}">Operation</a><span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/operation}" style="color:#ffffff">Operation</a><span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <ul class="navbar-nav mr-right">
             <li class="nav-item float-right">
-                <span> Hi </span><span sec:authentication="name"></span>
-<!--                <span span sec:authentication="principal.authorities"></span>-->
+                <span style="color:#ffffff"> Hi </span><span sec:authentication="name" style="color:#ffffff"></span>
+                <form th:action="@{/logout}" th:method="post">
+                    <input class="btn btn-link" style="color:#ffffff" type="submit" value="Logout">
+                </form>
             </li>
             <li>
-                <form th:action="@{/logout}" th:method="post">
-                    <input type="submit" value="Logout">
-                </form>
+
             </li>
         </ul>
     </div>

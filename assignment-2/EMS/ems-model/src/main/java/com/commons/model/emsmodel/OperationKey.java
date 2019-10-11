@@ -1,4 +1,4 @@
-package lk.ems.employee.entity;
+package com.commons.model.emsmodel;
 
 import java.io.Serializable;
 import java.util.Objects;

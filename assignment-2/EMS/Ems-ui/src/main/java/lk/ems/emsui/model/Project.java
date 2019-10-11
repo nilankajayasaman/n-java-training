@@ -1,8 +1,10 @@
 package lk.ems.emsui.model;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Scope("prototype")
 public class Project {
@@ -15,6 +17,12 @@ public class Project {
 
     @NotBlank(message = "Description is mandatory")
     private String description;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
 
     public Integer getProjectId() {
         return projectId;
@@ -38,5 +46,21 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 }

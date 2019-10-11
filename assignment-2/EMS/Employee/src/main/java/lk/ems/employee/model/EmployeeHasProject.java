@@ -1,7 +1,7 @@
 package lk.ems.employee.model;
 
-import lk.ems.employee.entity.Operation;
-import lk.ems.employee.entity.Project;
+import com.commons.model.emsmodel.Project;
+import com.commons.model.emsmodel.Operation;
 import org.springframework.context.annotation.Scope;
 
 import java.io.Serializable;

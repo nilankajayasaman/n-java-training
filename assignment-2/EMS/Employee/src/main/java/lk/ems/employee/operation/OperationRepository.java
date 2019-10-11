@@ -1,7 +1,7 @@
 package lk.ems.employee.operation;
 
-import lk.ems.employee.entity.Operation;
-import lk.ems.employee.entity.OperationKey;
+import com.commons.model.emsmodel.Operation;
+import com.commons.model.emsmodel.OperationKey;
 import lk.ems.employee.model.EmployeeHasProject;
 import lk.ems.employee.model.EmployeeProjectHasTask;
 import org.springframework.data.domain.Page;

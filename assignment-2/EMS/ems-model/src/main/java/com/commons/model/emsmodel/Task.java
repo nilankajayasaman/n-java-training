@@ -1,10 +1,11 @@
-package lk.ems.task.entity;
+package com.commons.model.emsmodel;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "task")
-public class Task {
+public class Task implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

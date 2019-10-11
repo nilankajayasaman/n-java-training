@@ -3,11 +3,13 @@ package lk.ems.emsui.conf;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableOAuth2Sso
+//@EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -20,8 +22,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/images/*")
                 .permitAll()
                 .anyRequest()
-                .authenticated();
-        http.logout().deleteCookies("JSESSIONID","KSESSIONID")
-                .logoutUrl("http://localhost:9090/expire").logoutSuccessUrl("/home").permitAll();
+                .authenticated().and()
+                .logout()
+                .deleteCookies("JSESSIONID","KSID")
+//                .logoutSuccessUrl("http://localhost:9090/expire")
+                .logoutSuccessUrl("/")
+//                .logoutSuccessUrl("/")
+                .permitAll();
     }
 }

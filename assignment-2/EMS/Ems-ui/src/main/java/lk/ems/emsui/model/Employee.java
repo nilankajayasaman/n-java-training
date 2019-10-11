@@ -24,8 +24,10 @@ public class Employee {
     @Email(message = "Email should be valid")
     private String email;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    private Date date;
+
+    private String tel;
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -59,11 +61,19 @@ public class Employee {
         this.email = email;
     }
 
-    public Date getDate() {
-        return date;
+    public String getTel() {
+        return tel;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
+
+    //    public Date getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(Date date) {
+//        this.date = date;
+//    }
 }

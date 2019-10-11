@@ -1,6 +1,6 @@
 package lk.ems.project.project;
 
-import lk.ems.project.entity.Project;
+import com.commons.model.emsmodel.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,7 +38,7 @@ public class ProjectController {
 
 
     @RequestMapping(value = "/projects" , method = RequestMethod.POST)
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public Project saveProject(@RequestBody Project project){
 
         return projectService.saveProject(project);

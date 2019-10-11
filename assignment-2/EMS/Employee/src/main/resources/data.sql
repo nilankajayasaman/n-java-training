@@ -1,4 +1,4 @@
-INSERT INTO employee VALUES
+INSERT INTO employee (employee_id,first_name,surname,email) VALUES
 (1,"saman","kumara","saman@gmail.com"),
 (2,"wasantha","arachchige","wasantha@gmail.com"),
 (3,"wasantha","arachchige","wasantha@gmail.com"),
@@ -22,7 +22,7 @@ INSERT INTO employee VALUES
 (21,"wasantha","arachchige","wasantha@gmail.com"),
 (22,"kumari","thennakoon","kumari@gmail.com");
 
---INSERT INTO operation VALUES(1,1,1),(2,1,1),(3,1,1),(1,2,2),(1,2,1);
+INSERT INTO operation (employee_id,project_id,task_id)VALUES(1,1,1),(2,1,1),(3,1,1),(1,2,2),(1,2,1);
 
 INSERT INTO project (project_id,title,description)VALUES
 (1,"ems","employee management system"),

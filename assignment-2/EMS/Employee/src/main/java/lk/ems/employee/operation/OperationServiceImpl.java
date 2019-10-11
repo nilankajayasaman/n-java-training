@@ -2,10 +2,10 @@ package lk.ems.employee.operation;
 
 import lk.ems.employee.conf.AccessTokenConfigure;
 import lk.ems.employee.employee.EmployeeRepository;
-import lk.ems.employee.entity.Employee;
-import lk.ems.employee.entity.Operation;
-import lk.ems.employee.entity.Project;
-import lk.ems.employee.entity.Task;
+import com.commons.model.emsmodel.Employee;
+import com.commons.model.emsmodel.Operation;
+import com.commons.model.emsmodel.Task;
+import com.commons.model.emsmodel.Project;
 import lk.ems.employee.model.EmployeeHasProject;
 import lk.ems.employee.model.EmployeeProject;
 import lk.ems.employee.model.EmployeeProjectHasTask;

@@ -5,6 +5,7 @@ import lk.ems.emsui.conf.AccessTokenConfigure;
 import lk.ems.emsui.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -178,7 +179,6 @@ public class Ui_Controller {
                 restTemplate.exchange("http://localhost:8282/ems/api/v1/employees",
                         HttpMethod.GET,
                         httpEntity, ArrayList.class);
-        System.out.println(responseEntity.getBody());
         model.addAttribute("employees",responseEntity.getBody());
         responseEntity =
                 restTemplate.exchange("http://localhost:8484/ems/api/v1/tasks",
@@ -271,7 +271,7 @@ public class Ui_Controller {
         httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
 
         HttpEntity<EmployeeProjectHasTask> httpEntity = new HttpEntity<>(httpHeaders);
-        System.out.println(pageNo);
+
         ResponseEntity<HashMap> responseEntity =
                 restTemplate.exchange("http://localhost:8282/ems/api/v1/operations/"+empId+"/"+proId+"/"+pageNo,
                         HttpMethod.GET,

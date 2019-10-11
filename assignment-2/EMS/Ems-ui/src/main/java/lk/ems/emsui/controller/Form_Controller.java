@@ -31,7 +31,6 @@ public class Form_Controller {
     @Autowired
     RestTemplate restTemplate;
 
-//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "employee/save-emp", method = RequestMethod.POST)
     public String saveEmployee(@Valid Employee employee,BindingResult bindingResult,
                                RedirectAttributes redirectAttributes){
@@ -62,13 +61,13 @@ public class Form_Controller {
     }
 
 
-//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "project/save-project", method = RequestMethod.POST)
     public String saveProject(@Valid Project project, BindingResult bindingResult,
                               RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()){
             return "project/pro-reg";
         }
+
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
         HttpEntity<Employee> httpEntity = new HttpEntity(project,httpHeaders);
@@ -85,6 +84,7 @@ public class Form_Controller {
                 redirectAttributes.addFlashAttribute("message", responseEntity.getStatusCode());
             }
         }catch (Exception e){
+            e.printStackTrace();
             redirectAttributes.addFlashAttribute("error", true);
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             return "redirect:/project/pro-reg";
@@ -95,7 +95,6 @@ public class Form_Controller {
 
 
 
-//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "task/save-task", method = RequestMethod.POST)
     public String saveTask(@Valid Task task, BindingResult bindingResult,
                            RedirectAttributes redirectAttributes){
@@ -126,7 +125,6 @@ public class Form_Controller {
     }
 
 
-//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "save-operation", method = RequestMethod.POST)
     public String saveOperation(@Valid Operation operation, BindingResult bindingResult,
                                 RedirectAttributes redirectAttributes){

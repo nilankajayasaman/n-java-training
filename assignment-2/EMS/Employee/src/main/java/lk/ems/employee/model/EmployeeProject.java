@@ -1,6 +1,6 @@
 package lk.ems.employee.model;
 
-import lk.ems.employee.entity.Employee;
+import com.commons.model.emsmodel.Employee;
 import org.springframework.data.domain.Page;
 
 import java.io.Serializable;

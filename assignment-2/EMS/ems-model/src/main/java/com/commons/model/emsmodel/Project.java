@@ -1,10 +1,12 @@
-package lk.ems.project.entity;
+package com.commons.model.emsmodel;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "project")
-public class Project {
+public class Project implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +17,12 @@ public class Project {
 
     @Basic
     private String description;
+
+    @Basic
+    private LocalDate startDate;
+
+    @Basic
+    private LocalDate endDate;
 
     public Integer getProjectId() {
         return projectId;
@@ -38,5 +46,21 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 }
