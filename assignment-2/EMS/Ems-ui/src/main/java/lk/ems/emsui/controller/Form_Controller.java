@@ -42,7 +42,7 @@ public class Form_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(employee,httpHeaders);
         try {
             ResponseEntity<Employee> responseEntity =
-                    restTemplate.exchange("http://localhost:8282/ems/api/v1/employees",
+                    restTemplate.exchange("http://employee:8282/ems/api/v1/employees",
                             HttpMethod.POST,
                             httpEntity, Employee.class);
             if (responseEntity.getStatusCodeValue() == 200) {
@@ -73,7 +73,7 @@ public class Form_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity(project,httpHeaders);
         try {
             ResponseEntity<Employee> responseEntity =
-                    restTemplate.exchange("http://localhost:8383/ems/api/v1/projects",
+                    restTemplate.exchange("http://project:8383/ems/api/v1/projects",
                             HttpMethod.POST,
                             httpEntity, Employee.class);
             if (responseEntity.getStatusCodeValue() == 200) {
@@ -106,7 +106,7 @@ public class Form_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity(task,httpHeaders);
         try {
             ResponseEntity<Employee> responseEntity =
-                    restTemplate.exchange("http://localhost:8484/ems/api/v1/tasks",
+                    restTemplate.exchange("http://task:8484/ems/api/v1/tasks",
                             HttpMethod.POST,
                             httpEntity, Employee.class);
             if (responseEntity.getStatusCodeValue() == 200) {
@@ -148,7 +148,7 @@ public class Form_Controller {
         try {
             System.out.println(operations);
             ResponseEntity<ArrayList> responseEntity =
-                    restTemplate.exchange("http://localhost:8282/ems/api/v1/operations",
+                    restTemplate.exchange("http://employee:8282/ems/api/v1/operations",
                             HttpMethod.POST,
                             httpEntity, ArrayList.class);
             if (responseEntity.getStatusCodeValue() == 200) {

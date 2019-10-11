@@ -78,7 +78,7 @@ public class Ui_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://localhost:8282/ems/api/v1/employees/"+pageNo,
+                restTemplate.exchange("http://employee:8282/ems/api/v1/employees/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
 
@@ -113,7 +113,7 @@ public class Ui_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://localhost:8383/ems/api/v1/projects/"+pageNo,
+                restTemplate.exchange("http://project:8383/ems/api/v1/projects/"+pageNo,
                         HttpMethod.GET,
                        httpEntity, HashMap.class);
         int totalPages = (int)responseEntity.getBody().get("totalPages");
@@ -148,7 +148,7 @@ public class Ui_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://localhost:8484/ems/api/v1/tasks/"+pageNo,
+                restTemplate.exchange("http://task:8484/ems/api/v1/tasks/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
         int totalPages = (int)responseEntity.getBody().get("totalPages");
@@ -176,17 +176,17 @@ public class Ui_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<ArrayList> responseEntity =
-                restTemplate.exchange("http://localhost:8282/ems/api/v1/employees",
+                restTemplate.exchange("http://employee:8282/ems/api/v1/employees",
                         HttpMethod.GET,
                         httpEntity, ArrayList.class);
         model.addAttribute("employees",responseEntity.getBody());
         responseEntity =
-                restTemplate.exchange("http://localhost:8484/ems/api/v1/tasks",
+                restTemplate.exchange("http://task:8484/ems/api/v1/tasks",
                         HttpMethod.GET,
                         httpEntity, ArrayList.class);
         model.addAttribute("tasks",responseEntity.getBody());
         responseEntity =
-                restTemplate.exchange("http://localhost:8383/ems/api/v1/projects",
+                restTemplate.exchange("http://project:8383/ems/api/v1/projects",
                         HttpMethod.GET,
                         httpEntity, ArrayList.class);
         model.addAttribute("projects",responseEntity.getBody());
@@ -234,7 +234,7 @@ public class Ui_Controller {
         HttpEntity<EmployeeHasProject> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://localhost:8282/ems/api/v1/operations/"+empId+"/"+pageNo,
+                restTemplate.exchange("http://employee:8282/ems/api/v1/operations/"+empId+"/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
         if (responseEntity.getBody()!=null) {
@@ -273,7 +273,7 @@ public class Ui_Controller {
         HttpEntity<EmployeeProjectHasTask> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://localhost:8282/ems/api/v1/operations/"+empId+"/"+proId+"/"+pageNo,
+                restTemplate.exchange("http://employee:8282/ems/api/v1/operations/"+empId+"/"+proId+"/"+pageNo,
                         HttpMethod.GET,
                         httpEntity, HashMap.class);
 
