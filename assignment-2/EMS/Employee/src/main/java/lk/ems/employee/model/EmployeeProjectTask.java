@@ -1,7 +1,7 @@
 package lk.ems.employee.model;
 
-import com.commons.model.emsmodel.Project;
-import com.commons.model.emsmodel.Employee;
+import com.commons.model.emsmodel.project.Project;
+import com.commons.model.emsmodel.employee.Employee;
 import org.springframework.data.domain.Page;
 
 public class EmployeeProjectTask {

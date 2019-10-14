@@ -1,6 +1,6 @@
 package lk.ems.employee.employee;
 
-import com.commons.model.emsmodel.Employee;
+import com.commons.model.emsmodel.employee.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

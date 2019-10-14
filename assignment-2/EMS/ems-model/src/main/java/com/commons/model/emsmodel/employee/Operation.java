@@ -1,4 +1,4 @@
-package com.commons.model.emsmodel;
+package com.commons.model.emsmodel.employee;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

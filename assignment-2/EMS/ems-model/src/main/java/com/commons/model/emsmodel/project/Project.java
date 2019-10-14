@@ -1,4 +1,4 @@
-package com.commons.model.emsmodel;
+package com.commons.model.emsmodel.project;
 
 import javax.persistence.*;
 import java.io.Serializable;

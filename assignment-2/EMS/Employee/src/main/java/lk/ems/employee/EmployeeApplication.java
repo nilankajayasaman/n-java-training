@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@EntityScan("com.commons.model.emsmodel")
+@EntityScan("com.commons.model.emsmodel.employee")
 public class EmployeeApplication {
 
 	public static void main(String[] args) {

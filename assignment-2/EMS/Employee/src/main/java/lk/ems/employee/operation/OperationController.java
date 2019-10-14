@@ -1,6 +1,6 @@
 package lk.ems.employee.operation;
 
-import com.commons.model.emsmodel.Operation;
+import com.commons.model.emsmodel.employee.Operation;
 import lk.ems.employee.model.EmployeeHasProject;
 import lk.ems.employee.model.EmployeeProjectHasTask;
 import lk.ems.employee.model.EmployeeProjectTask;

@@ -2,10 +2,10 @@ package lk.ems.employee.operation;
 
 import lk.ems.employee.conf.AccessTokenConfigure;
 import lk.ems.employee.employee.EmployeeRepository;
-import com.commons.model.emsmodel.Employee;
-import com.commons.model.emsmodel.Operation;
-import com.commons.model.emsmodel.Task;
-import com.commons.model.emsmodel.Project;
+import com.commons.model.emsmodel.employee.Employee;
+import com.commons.model.emsmodel.employee.Operation;
+import com.commons.model.emsmodel.task.Task;
+import com.commons.model.emsmodel.project.Project;
 import lk.ems.employee.model.EmployeeHasProject;
 import lk.ems.employee.model.EmployeeProject;
 import lk.ems.employee.model.EmployeeProjectHasTask;
@@ -47,7 +47,7 @@ public class OperationServiceImpl {
             httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
             HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
             ResponseEntity<Project[]> responseEntity =
-                    restTemplate.exchange("http://localhost:8383/ems/api/v1/projects/employee/{prList}",
+                    restTemplate.exchange("http://project:8383/ems/api/v1/projects/employee/{prList}",
                             HttpMethod.GET,
                             httpEntity, Project[].class, prIds);
 
@@ -78,7 +78,7 @@ public class OperationServiceImpl {
         httpHeaders.setBearerAuth(AccessTokenConfigure.getToken());
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<Project[]> responseEntity =
-                restTemplate.exchange("http://localhost:8383/ems/api/v1/projects/employee/{prList}",
+                restTemplate.exchange("http://project:8383/ems/api/v1/projects/employee/{prList}",
                         HttpMethod.GET,
                         httpEntity, Project[].class,projectId);
 
@@ -90,7 +90,7 @@ public class OperationServiceImpl {
 
         if (!tskIds.equals("")) {
             ResponseEntity<Task[]> responseEntityTask =
-                    restTemplate.exchange("http://localhost:8484/ems/api/v1/tasks/",
+                    restTemplate.exchange("http://task:8484/ems/api/v1/tasks/",
                             HttpMethod.GET,
                             httpEntity, Task[].class, projectId);
 

@@ -1,4 +1,4 @@
-package com.commons.model.emsmodel;
+package com.commons.model.emsmodel.employee;
 
 import java.io.Serializable;
 import java.util.Objects;
