@@ -1,6 +1,6 @@
 package lk.ems.project.project;
 
-import com.commons.model.emsmodel.Project;
+import com.commons.model.emsmodel.project.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
