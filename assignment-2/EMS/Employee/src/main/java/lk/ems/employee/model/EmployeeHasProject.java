@@ -40,8 +40,7 @@ public class EmployeeHasProject implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EmployeeHasProject that = (EmployeeHasProject) o;
-        return Objects.equals(operation, that.operation) &&
-                Objects.equals(project, that.project);
+        return Objects.equals(project, that.project);
     }
 
     @Override

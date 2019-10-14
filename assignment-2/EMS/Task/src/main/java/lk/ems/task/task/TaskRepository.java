@@ -1,6 +1,6 @@
 package lk.ems.task.task;
 
-import com.commons.model.emsmodel.Task;
+import com.commons.model.emsmodel.task.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

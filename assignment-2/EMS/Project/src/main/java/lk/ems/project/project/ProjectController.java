@@ -24,9 +24,9 @@ public class ProjectController {
         return projectService.getAllProjects();
     }
 
-    @RequestMapping(value = "/projects/{page}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/projects/page" , method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('read')")
-    public Page<Project> getLimitProjects(@PathVariable("page") int page){
+    public Page<Project> getLimitProjects(@RequestParam("page") int page){
         return projectService.getLimitProjects(page);
     }
 

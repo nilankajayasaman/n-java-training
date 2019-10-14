@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -19,16 +20,16 @@ public class OperationController {
     @Autowired
     OperationServiceImpl employeeService;
 
-    @RequestMapping(value = "/operations/{employeeId}/{page}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/operations/employee/{employeeId}" , method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('read')")
-    public ResponseEntity getEmployeeProject(@PathVariable("employeeId") int employeeId, @PathVariable("page") int page) throws Exception {
+    public ResponseEntity getEmployeeProject(@PathVariable("employeeId") int employeeId, @RequestParam("page") int page) throws Exception {
         return employeeService.getEmployeeProjects(employeeId, page);
     }
 
-    @RequestMapping(value = "/operations/{employeeId}/{projectId}/{page}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/operations/employee/{employeeId}/project/{projectId}" , method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('read')")
     public ResponseEntity getEmployeeProjectTasks(@PathVariable("employeeId") int employeeId,
-                                                  @PathVariable("projectId") int projectId, @PathVariable("page") int page){
+                                                  @PathVariable("projectId") int projectId, @RequestParam("page") int page){
 
         return employeeService.getEmployeeProjectsTask(employeeId,projectId,page);
     }

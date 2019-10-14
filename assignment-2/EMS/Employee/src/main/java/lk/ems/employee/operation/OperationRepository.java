@@ -31,8 +31,8 @@ public interface OperationRepository extends JpaRepository<Operation, OperationK
 ////    Page<Operation> getEmployeeTasks(@Param("employeeId") int employeeId, @Param("projectId") int projectId, Pageable pageable);
 
     @Query(value = "SELECT new lk.ems.employee.model.EmployeeHasProject(op) " +
-            "FROM Operation op WHERE op.employeeId=:employeeId", nativeQuery = false,
-            countQuery = "SELECT count(op) FROM Operation op")
+            "FROM Operation op WHERE op.employeeId=:employeeId GROUP BY op.employeeId, op.projectId", nativeQuery = false,
+            countQuery = "SELECT count(op.projectId) FROM Operation op")
     Page<EmployeeHasProject> getOperationByEmployeeId(@Param("employeeId") int employeeId, Pageable pageable);
 
     @Query(value = "SELECT new lk.ems.employee.model.EmployeeProjectHasTask(op) FROM Operation op" +

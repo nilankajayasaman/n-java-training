@@ -17,7 +17,6 @@ public class controller {
 
         new SecurityContextLogoutHandler().logout(request, null, authentication);
         try {
-            System.out.println(request.getHeader("referer")+"============");
             response.sendRedirect(request.getHeader("referer"));
         } catch (IOException e) {
             e.printStackTrace();

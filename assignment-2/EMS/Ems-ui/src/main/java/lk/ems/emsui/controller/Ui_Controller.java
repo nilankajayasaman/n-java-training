@@ -78,9 +78,9 @@ public class Ui_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://employee:8282/ems/api/v1/employees/"+pageNo,
+                restTemplate.exchange("http://employee:8282/ems/api/v1/employees/page?page={pageNo}",
                         HttpMethod.GET,
-                        httpEntity, HashMap.class);
+                        httpEntity, HashMap.class,pageNo);
 
         int totalPages = (int)responseEntity.getBody().get("totalPages");
         if(totalPages > 0) {
@@ -113,9 +113,9 @@ public class Ui_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://project:8383/ems/api/v1/projects/"+pageNo,
+                restTemplate.exchange("http://project:8383/ems/api/v1/projects/page?=page={pageNo}",
                         HttpMethod.GET,
-                       httpEntity, HashMap.class);
+                       httpEntity, HashMap.class,pageNo);
         int totalPages = (int)responseEntity.getBody().get("totalPages");
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
@@ -148,9 +148,9 @@ public class Ui_Controller {
         HttpEntity<Employee> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://task:8484/ems/api/v1/tasks/"+pageNo,
+                restTemplate.exchange("http://task:8484/ems/api/v1/tasks/page?page={pageNo}",
                         HttpMethod.GET,
-                        httpEntity, HashMap.class);
+                        httpEntity, HashMap.class,pageNo);
         int totalPages = (int)responseEntity.getBody().get("totalPages");
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
@@ -234,9 +234,9 @@ public class Ui_Controller {
         HttpEntity<EmployeeHasProject> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://employee:8282/ems/api/v1/operations/"+empId+"/"+pageNo,
+                restTemplate.exchange("http://employee:8282/ems/api/v1/operations/employee/{empId}?page={pageNo}",
                         HttpMethod.GET,
-                        httpEntity, HashMap.class);
+                        httpEntity, HashMap.class,empId,pageNo);
         if (responseEntity.getBody()!=null) {
             int totalPages = (int) ((Map) responseEntity.getBody().get("employeeHasProjects")).get("totalPages");
             if (totalPages > 0) {
@@ -248,6 +248,7 @@ public class Ui_Controller {
                 model.addAttribute("totalPages", totalPages);
             }
 
+            System.out.println(responseEntity.getBody());
             model.addAttribute("operation", responseEntity.getBody().get("employeeHasProjects"));
             model.addAttribute("employee", responseEntity.getBody().get("employee"));
             return "employee/emp-projects";
@@ -273,11 +274,11 @@ public class Ui_Controller {
         HttpEntity<EmployeeProjectHasTask> httpEntity = new HttpEntity<>(httpHeaders);
 
         ResponseEntity<HashMap> responseEntity =
-                restTemplate.exchange("http://employee:8282/ems/api/v1/operations/"+empId+"/"+proId+"/"+pageNo,
+                restTemplate.exchange("http://employee:8282/ems/api/v1/operations/employee/{empId}/project/{proId}?=page={pageNo}",
                         HttpMethod.GET,
-                        httpEntity, HashMap.class);
+                        httpEntity, HashMap.class,empId,proId,pageNo);
 
-        if (responseEntity.getBody()!=null) {
+        if (responseEntity.getBody()!=null && ((Map)responseEntity.getBody().get("employeeProjectHasTasks")).get("task")!=null) {
             int totalPages = (int) ((Map) responseEntity.getBody().get("employeeProjectHasTasks")).get("totalPages");
             if (totalPages > 0) {
                 List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
@@ -287,13 +288,13 @@ public class Ui_Controller {
                 model.addAttribute("next", pageNo + 2);
                 model.addAttribute("totalPages", totalPages);
             }
+
+            model.addAttribute("operation",responseEntity.getBody().get("employeeProjectHasTasks"));
+            model.addAttribute("employee",responseEntity.getBody().get("employee"));
+            model.addAttribute("project",responseEntity.getBody().get("project"));
+            return "employee/emp-tasks";
         }
-
-        model.addAttribute("operation",responseEntity.getBody().get("employeeProjectHasTasks"));
-        model.addAttribute("employee",responseEntity.getBody().get("employee"));
-        model.addAttribute("project",responseEntity.getBody().get("project"));
-
-        return "employee/emp-tasks";
+        return "redirect:/employee/emp-projects/"+empId;
     }
 
 }
