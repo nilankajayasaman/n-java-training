@@ -8,7 +8,7 @@ spring:
     name:
       application: employee-service
   datasource:
-    url: jdbc:mysql://ems-mysql:3306/ems?createDatabaseIfNotExist=true
+    url: jdbc:mysql://ems-mysql:3306/ems-employee?createDatabaseIfNotExist=true
     username: root
 #    password: 123
     password: 1qaz2wsx@

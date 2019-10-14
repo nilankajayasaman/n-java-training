@@ -5,7 +5,7 @@ spring:
     name:
       application: project-service
   datasource:
-    url: jdbc:mysql://localhost:3306/ems?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/ems-task?createDatabaseIfNotExist=true
     username: root
 #    password: 123
     password: 1qaz2wsx@
