@@ -5,7 +5,8 @@ spring:
     name:
       application: auth-server
   datasource:
-    url: jdbc:mysql://ems-mysql:3306/oAuth_EMS_DB?createDatabaseIfNotExist=true&sessionVariables=sql_mode=''
+    url: jdbc:mysql://localhost:3306/oAuth_EMS_DB?createDatabaseIfNotExist=true&sessionVariables=sql_mode=''
+# url: jdbc:mysql://ems-mysql:3306/oAuth_EMS_DB?createDatabaseIfNotExist=true&sessionVariables=sql_mode=''
     username: root
 #    password: 123
     password: 1qaz2wsx@
