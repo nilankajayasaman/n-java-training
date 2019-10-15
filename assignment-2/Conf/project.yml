@@ -5,8 +5,8 @@ spring:
     name:
       application: project-service
   datasource:
-    url: jdbc:mysql://localhost:3306/ems_project?createDatabaseIfNotExist=true&sessionVariables=sql_mode=''
-#    url: jdbc:mysql://ems-mysql:3306/ems_project?createDatabaseIfNotExist=true&sessionVariables=sql_mode=''
+#    url: jdbc:mysql://localhost:3306/ems_project?createDatabaseIfNotExist=true&sessionVariables=sql_mode=''
+    url: jdbc:mysql://ems-mysql:3306/ems_project?createDatabaseIfNotExist=true&sessionVariables=sql_mode=''
 
     username: root
 #    password: 123
@@ -23,8 +23,8 @@ spring:
 security:
   oauth2:
     resource:
-      token-info-uri: http://localhost:9090/oauth/check_token
-#      token-info-uri: http://auth:9090/oauth/check_token
+#     token-info-uri: http://localhost:9090/oauth/check_token
+     token-info-uri: http://auth:9090/oauth/check_token
     client:
       client-id: web
       client-secret: pin
