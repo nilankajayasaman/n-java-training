@@ -14,21 +14,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OperationRepository extends JpaRepository<Operation, OperationKey> {
-//
-//    @Query(nativeQuery = true,value = "SELECT new lk.ems.employee.model.EmployeeHasProject(op) FROM Operation op WHERE op.employeeId= :employeeId")
-//    Page<EmployeeHasProject> getOperationByEmployeeId(@Param("employeeId") int employeeId, Pageable pageable);
-//
-//
-//    @Query(nativeQuery = true, value = "SELECT new lk.ems.employee.model.EmployeeProjectHasTask(op) FROM Operation op" +
-//            " WHERE op.employeeId= :employeeId AND op.projectId= :projectId")
-//    Page<EmployeeProjectHasTask> getEmployeeTasks(@Param("employeeId") int employeeId, @Param("projectId") int projectId, Pageable pageable);
-//
-////    @Query("SELECT op FROM Operation op WHERE op.employeeId=:employeeId")
-////    Page<Operation> getOperationByEmployeeId(@Param("employeeId") int employeeId, Pageable pageable);
-////
-////    @Query("SELECT op FROM Operation op" +
-////            " WHERE op.employeeId=:employeeId AND op.projectId=:projectId")
-////    Page<Operation> getEmployeeTasks(@Param("employeeId") int employeeId, @Param("projectId") int projectId, Pageable pageable);
 
     @Query(value = "SELECT new lk.ems.employee.model.EmployeeHasProject(op) " +
             "FROM Operation op WHERE op.employeeId=:employeeId GROUP BY op.employeeId, op.projectId", nativeQuery = false,
@@ -40,12 +25,5 @@ public interface OperationRepository extends JpaRepository<Operation, OperationK
             countQuery = "SELECT count(op) FROM Operation op")
     Page<EmployeeProjectHasTask> getEmployeeTasks(@Param("employeeId") int employeeId, @Param("projectId") int projectId, Pageable pageable);
 
-//    @Query("SELECT op FROM Operation op WHERE op.employeeId=:employeeId")
-//    Page<Operation> getOperationByEmployeeId(@Param("employeeId") int employeeId, Pageable pageable);
-//
-//    @Query("SELECT op FROM Operation op" +
-//            " WHERE op.employeeId=:employeeId AND op.projectId=:projectId")
-//    Page<Operation> getEmployeeTasks(@Param("employeeId") int employeeId, @Param("projectId") int projectId, Pageable pageable);
-//
 
 }

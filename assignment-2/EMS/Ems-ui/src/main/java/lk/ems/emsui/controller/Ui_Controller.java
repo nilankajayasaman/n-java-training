@@ -53,15 +53,12 @@ public class Ui_Controller {
         return "index";
     }
 
-//    @PreAuthorize("hasRole('MANAGER','OPERATOR')")
-//    @RolesAllowed({"MANAGER","OPERATOR"})
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(){
 
         return "home";
     }
 
-//    @PreAuthorize("hasRole(MANAGER,OPERATOR)")
     @RequestMapping(value = {"/employee"}, method = RequestMethod.GET)
     public String employee(Principal principal, Model model, @PathParam("page") Optional<Integer> page){
         model.addAttribute("principal",principal);
@@ -96,7 +93,6 @@ public class Ui_Controller {
     }
 
 
-//    @PreAuthorize("hasRole(MANAGER,OPERATOR)")
     @RequestMapping(value = "/project", method = RequestMethod.GET)
     public String project(Principal principal, Model model, @PathParam("page") Optional<Integer> page){
         model.addAttribute("principal",principal);
@@ -131,7 +127,6 @@ public class Ui_Controller {
     }
 
 
-//    @PreAuthorize("hasRole(MANAGER,OPERATOR)")
     @RequestMapping(value = "/task", method = RequestMethod.GET)
     public String task(Principal principal, Model model, @PathParam("page") Optional<Integer> page){
         model.addAttribute("principal",principal);
@@ -167,7 +162,6 @@ public class Ui_Controller {
 
 
     @RequestMapping(value = "/operation", method = RequestMethod.GET)
-//    @PreAuthorize("hasRole('MANAGER')")
     public String operation(Model model){
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -194,8 +188,6 @@ public class Ui_Controller {
         return "operation/operation";
     }
 
-
-//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "employee/emp-reg", method = RequestMethod.GET)
     public String createEmployee(Model model){
         model.addAttribute("employee",employee);
@@ -204,20 +196,17 @@ public class Ui_Controller {
 
 
     @RequestMapping(value = "project/pro-reg", method = RequestMethod.GET)
-//    @PreAuthorize("hasRole(MANAGER)")
     public String createProject(Model model){
         model.addAttribute("project",project);
         return "project/pro-reg";
     }
 
-//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "task/task-reg", method = RequestMethod.GET)
     public String createTask(Model model){
         model.addAttribute("task",task);
         return "task/task-reg";
     }
 
-//    @PreAuthorize("hasRole(MANAGER)")
     @RequestMapping(value = "employee/emp-projects/{empId}", method = RequestMethod.GET)
     public String getEmployeeProjects(@PathVariable("empId") int empId,@PathParam("page") Optional<Integer> page,Model model){
 
@@ -248,7 +237,6 @@ public class Ui_Controller {
                 model.addAttribute("totalPages", totalPages);
             }
 
-            System.out.println(responseEntity.getBody());
             model.addAttribute("operation", responseEntity.getBody().get("employeeHasProjects"));
             model.addAttribute("employee", responseEntity.getBody().get("employee"));
             return "employee/emp-projects";
@@ -277,8 +265,8 @@ public class Ui_Controller {
                 restTemplate.exchange("http://employee:8282/ems/api/v1/operations/employee/{empId}/project/{proId}?=page={pageNo}",
                         HttpMethod.GET,
                         httpEntity, HashMap.class,empId,proId,pageNo);
-
-        if (responseEntity.getBody()!=null && ((Map)responseEntity.getBody().get("employeeProjectHasTasks")).get("task")!=null) {
+        if (responseEntity.getBody()!=null &&
+                responseEntity.getBody().get("employeeProjectHasTasks")!=null) {
             int totalPages = (int) ((Map) responseEntity.getBody().get("employeeProjectHasTasks")).get("totalPages");
             if (totalPages > 0) {
                 List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
