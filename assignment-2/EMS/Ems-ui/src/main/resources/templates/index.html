@@ -8,36 +8,50 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>EMS</title>
+    <style>
+    .homeHeader{
+        font-weight: 800;
+        font-size: 60px;
+    }
+    .loginBtn{
+        margin:25px 75px ;
+    }
+    body{
+        background-color: olive(203, 204, 241);
+    }
+
+    </style>
 </head>
-<body style="background-image:url('images/background.jpg')">
-<!--<div style="position: absolute;z-index: -1;background-image:url('images/background.jpg');opacity:0.5"></div>-->
-<div style="margin:20px">
-    <div class="jumbotron">
-        <p class="display-3">Employee Management System</p>
-        <div class="float-right align-bottom">
-            <a th:href="@{/home}"><button class="btn btn-outline-secondary">Login</button></a>
-
-        </div>
+<body>
+<div class="container">
+    <div class="homeHeader text-center">
+        EMPLOYEE MANAGEMENT SYSTEM
     </div>
-    <div class="container" style="background-color:#c3b7bc">
-        <div class="row">
-        <div class="col-3 card">
-            <img src="../static/images/Steve_Jobs_Speaking.jpg" width="300" th:src="@{images/Steve_Jobs_Speaking.jpg}"/>
+    <div>
+        <div class=" text-center">
+            <img width="40%" src="../static/images/empBack.png" th:src="@{images/empBack.png}">
         </div>
-        <div class="col-9 card">
-            <p>
-                During his tenure as the Chairman of the Board of Directors at Pixar,
-                lost profits in the company’s three endeavors—hardware, software, and animated
-                content—forced Jobs to make a round of deep layoffs. Jobs insisted that the employees were
-                to be let go without warning or severance pay.
+        <div class="text-center">
+            <a th:href="@{/home}">
+                <button class="btn btn-outline-secondary">Login</button>
+            </a>
+        </div>
 
-                Pamela Kerwin, then Pixar’s vice president and general manager,
-                insisted that employees be given at least two weeks notice, to which Jobs is reported to have shot back,
-                “Okay, but the notice is retroactive from two weeks ago.”
-            </p>
-        </div>
-        </div>
     </div>
+
+
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

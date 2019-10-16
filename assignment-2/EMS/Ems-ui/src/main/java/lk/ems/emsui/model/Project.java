@@ -3,7 +3,10 @@ package lk.ems.emsui.model;
 import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Scope("prototype")
@@ -19,9 +22,11 @@ public class Project {
     private String description;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @FutureOrPresent
     private LocalDate startDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future
     private LocalDate endDate;
 
     public Integer getProjectId() {
